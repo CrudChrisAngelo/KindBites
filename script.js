@@ -99,20 +99,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const productCard = button.closest('.product-card');
       const productName = productCard.querySelector('.product-name').textContent.trim();
 
-      // Check for <select class="price-option">
-      const select = productCard.querySelector('.price-option');
-      let price = 0;
-      let sizeLabel = '';
+      // ✅ Check for flavor option
+      const flavorSelect = productCard.querySelector('.flavor-option');
+      let flavorLabel = '';
+      if (flavorSelect) {
+        flavorLabel = flavorSelect.options[flavorSelect.selectedIndex].text.split('-')[0]?.trim() || '';
+      }
 
-      if (select) {
-        price = parseInt(select.value, 10);
-        sizeLabel = select.options[select.selectedIndex].text.split('-')[1]?.trim() || '';
+      // ✅ Check for price/topping option
+      const priceSelect = productCard.querySelector('.price-option');
+      let price = 0;
+      let styleLabel = '';
+
+      if (priceSelect) {
+        price = parseInt(priceSelect.value, 10);
+        styleLabel = priceSelect.options[priceSelect.selectedIndex].text.split('-')[1]?.trim() || '';
       } else {
         const priceText = productCard.querySelector('.product-price').textContent.trim();
         price = extractPrice(priceText);
       }
 
-      const itemLabel = sizeLabel ? `${productName} (${sizeLabel})` : productName;
+      // ✅ Combine into final label
+      let itemLabel = productName;
+      if (flavorLabel) itemLabel += ` - ${flavorLabel}`;
+      if (styleLabel) itemLabel += ` (${styleLabel})`;
 
       addToCart(itemLabel, price);
     });
@@ -120,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderCartIcon();
 });
+
 
 // Show cart total on nav or corner (optional enhancement)
 function renderCartIcon() {
@@ -398,7 +409,7 @@ function confirmGcashPayment() {
 
   console.log("FormData prepared");
 
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6a6nnzFFqPz2ysVPURn8S2tFxXIrF3rQ4ZaHdU9rDb4oVlZ4OMFjS0W3SjdTkVSNN/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx2ayTph84UCE_R4aW16oeFVbSPSRO0UqFiHhXGCbLgw8ZDU3AucjWvcJq4g0J4KOBL/exec";
 
   console.log("Sending to URL:", APPS_SCRIPT_URL);
 

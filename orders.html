@@ -162,10 +162,22 @@
                             <button class="btn btn-add-to-cart">Add to Cart</button>
                         </div> 
                     </div>
+
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <img src="images/Sampler Box.jpg" class="carousel-img active" alt="Sampler Boxx 1">
+                        </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sampler Box</h3>
+                        <p class="product-price">₱440 — Box of All Flavors (6 pcs)</p>
+                        <p class="product-description">Includes: Chunky Choco, White Knight, Biscoff Bliss, Matcha Lovers, Granola Crumbles, Red Velvet Cheesecake</p>
+                        <button class="btn btn-add-to-cart" data-price="440">Add to Cart</button>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <div class="category-section">
+            <div class="category-section" id="specials">
                 <h3 class="category-title">Specials</h3>
                 <div class="product-grid">
                     <div class="product-card">
@@ -176,13 +188,27 @@
                         <div class="product-info">
                             <h3 class="product-name">Messy Donuts (Stick)</h3>
                             <p class="product-price">₱30 • Add ₱5 toppings</p>
-                            <select class="price-option">
-                                <option value="30">₱30 - Plain</option>
-                                <option value="35">₱35 - With Toppings</option>
+
+                            <!-- Flavor Options -->
+                            <label for="flavor-option">Choose Flavor:</label>
+                            <select class="flavor-option" id="flavor-option">
+                            <option value="30">Chocolate Drizzle - ₱30</option>
+                            <option value="30">Strawberry Drizzle - ₱30</option>
+                            <option value="30">Matcha Drizzle - ₱30</option>
+                            <option value="30">Biscoff Drizzle - ₱30</option>
                             </select>
+
+                            <!-- Price/Topping Options -->
+                            <label for="price-option">Choose Style:</label>
+                            <select class="price-option" id="price-option">
+                            <option value="30">₱30 - Plain</option>
+                            <option value="35">₱35 - With Toppings</option>
+                            </select>
+
                             <button class="btn btn-add-to-cart">Add to Cart</button>
                         </div>
-                    </div>
+                        </div>
+
 
                     <div class="product-card">
                         <div class="product-image-carousel">
@@ -192,6 +218,16 @@
                         <div class="product-info">
                             <h3 class="product-name">Messy Donuts (Cup)</h3>
                             <p class="product-price">₱70–₱75 • 6 pcs with drizzle</p>
+
+                             <!-- Flavor Options -->
+                            <label for="flavor-option">Choose Flavor:</label>
+                            <select class="flavor-option" id="flavor-option">
+                            <option value="70">Messy Chocolate Oreo Donuts - ₱70</option>
+                            <option value="70">Strawberry Sprinkle Donuts - ₱70</option>
+                            <option value="70">Matcha Oreo Donuts - ₱70</option>
+                            <option value="70">Biscoff Bliss Donuts - ₱70</option>
+                            </select>
+
                             <select class="price-option">
                                 <option value="70">₱70 - Regular Drizzle</option>
                                 <option value="75">₱75 - Heavy Drizzle</option>
@@ -233,9 +269,9 @@
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Classic Spanish Brew</h3>
-                            <p class="product-price">₱65 / ₱75</p>
+                            <p class="product-price">₱55 / ₱75</p>
                             <select class="price-option">
-                                <option value="65">₱65 - 12 oz</option>
+                                <option value="55">₱55 - 12 oz</option>
                                 <option value="75">₱75 - 16 oz</option>
                             </select>
                             <button class="btn btn-add-to-cart">Add to Cart</button>
@@ -266,10 +302,10 @@
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Strawberry Dream Milk</h3>
-                            <p class="product-price">₱60 / ₱70</p>
+                            <p class="product-price">₱49 / ₱69</p>
                             <select class="price-option">
-                                <option value="60">₱60 - 12 oz</option>
-                                <option value="70">₱70 - 16 oz</option>
+                                <option value="49">₱49 - 12 oz</option>
+                                <option value="70">₱69 - 16 oz</option>
                             </select>
                             <button class="btn btn-add-to-cart">Add to Cart</button>
                         </div>
@@ -279,9 +315,9 @@
                         <div class="product-image" style="background-image: url('https://imgs.search.brave.com/a4btylLCG6PDyiDp-gAeYlqmifcM2QTEpsOENSS-8ho/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODc5/ODQ1NDUvcGhvdG8v/Y2hvY29sYXRlLW1p/bGsuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPVJZSEVUeEl6/ZWVBenVKMjdpYzVC/enNIMVZlVkNtbUNZ/ZFdxSGd4U2tSUG89');" aria-label="Chocolate Cloud Milk"></div>
                         <div class="product-info">
                             <h3 class="product-name">Chocolate Cloud Milk</h3>
-                            <p class="product-price">₱65 / ₱75</p>
+                            <p class="product-price">₱55 / ₱75</p>
                             <select class="price-option">
-                                <option value="65">₱65 - 12 oz</option>
+                                <option value="55">₱55 - 12 oz</option>
                                 <option value="75">₱75 - 16 oz</option>
                             </select>
                             <button class="btn btn-add-to-cart">Add to Cart</button>
@@ -294,9 +330,9 @@
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Classic Matcha Latte</h3>
-                            <p class="product-price">₱65 / ₱75</p>
+                            <p class="product-price">₱55 / ₱75</p>
                             <select class="price-option">
-                                <option value="65">₱65 - 12 oz</option>
+                                <option value="55">₱55 - 12 oz</option>
                                 <option value="75">₱75 - 16 oz</option>
                             </select>
                             <button class="btn btn-add-to-cart">Add to Cart</button>
@@ -344,20 +380,14 @@
 
     <section class="products" id="sampler-boxes">
         <div class="container">
-            <h2 class="section-title">Sampler & Custom Boxes</h2>
+            <h2 class="section-title">Custom Boxes</h2>
             <div class="product-grid">
-                <div class="product-card featured">
-                    <div class="product-image" style="background-image: url('https://imgs.search.brave.com/A7FJ80itcWveN4f1O-rMMz0y5c_sTV9OXZ12apeeBPs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zcHJp/bmtsZXMuY29tL2Nk/bi9zaG9wL2ZpbGVz/L0p1bmVNaW5pczJf/MjIyeDIyMkAyeC5w/bmc_dj0xNzE2NDg0/NzA2');" aria-label="Sampler Box"></div>
-                    <div class="product-info">
-                        <h3 class="product-name">Sampler Box</h3>
-                        <p class="product-price">₱440 — Box of All Flavors (6 pcs)</p>
-                        <p class="product-description">Includes: Chunky Choco, White Knight, Biscoff Bliss, Matcha Lovers, Granola Crumbles, Red Velvet Cheesecake</p>
-                        <button class="btn btn-add-to-cart" data-price="440">Add to Cart</button>
-                    </div>
-                </div>
+                
 
-                <div class="product-card featured">
-                    <div class="product-image" style="background-image: url('https://imgs.search.brave.com/Y0TJGIu_Tl5UqVcJ_5iSK4VYB7EvbGiRmdftBjeOx6U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYmFr/ZXJzLnVzL2Nkbi9z/aG9wL2ZpbGVzL0Jv/eF9vZl8xMl9DdXBj/YWtlcy5wbmc_dj0x/NzQ0OTMzNjQ5Jndp/ZHRoPXt3aWR0aH0');" aria-label="Create Your Own Box"></div>
+                <div class="product-card">
+                        <div class="product-image-carousel">
+                            <img src="images/create your own box.jpg" class="carousel-img active" alt="create your own box 1">
+                        </div>
                     <div class="product-info">
                         <h3 class="product-name">Create Your Own Box</h3>
                         <p class="product-price">Box of 3: Price of cookies + ₱10<br>Box of 6: Price of cookies + ₱15</p>
