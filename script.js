@@ -398,7 +398,7 @@ function confirmGcashPayment() {
 
   console.log("FormData prepared");
 
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywJPJTfJcR0lFbzIrxNyYaGfEiEvV82wtrUVfTuvFyKYyPyrmKWHvERVSldeTQmOBPJg/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6a6nnzFFqPz2ysVPURn8S2tFxXIrF3rQ4ZaHdU9rDb4oVlZ4OMFjS0W3SjdTkVSNN/exec";
 
   console.log("Sending to URL:", APPS_SCRIPT_URL);
 
