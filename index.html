@@ -1,479 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="images/logo/KindBitesLogo.jpg">
-    <title>Kind Bites | Delicious Cookies & Drinks</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Short+Stack&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kind Bites - Treats That Spread Joy</title>
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    :root {
+      --primary-color: #F18B85;     /* Coral Pink */
+      --primary-dark: #e0736d;      /* Darker Coral for hover */
+      --secondary-color: #6DB4AE;   /* Teal */
+      --accent-color: #5C5C74;      /* Grayish Blue */
+      --bg-cream: #FFF8F1;          /* Cream background */
+      --bg-peach: #FFEAE4;          /* Lighter coral tint for sections */
+      --text-dark: #2a2a2a;         
+      --text-light: #666;           
+      --white: #ffffff;
+      --shadow: rgba(92, 92, 116, 0.15); /* Shadow tinted with gray-blue */
+      --gradient: linear-gradient(135deg, #FFEAE4 0%, #FFF8F1 100%);
+    }
+
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+    .float { animation: float 3s ease-in-out infinite; }
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 250, 247, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(224, 122, 95, 0.1);
+    }
+    
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .order-btn-nav {
+      background: var(--secondary-color);
+      color: var(--white);
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+    
+    .order-btn-nav:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--gradient);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 20px 80px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23e07a5f" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="%23f4a261" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="%23e9c46a" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+    
+    .hero-content p {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 35px;
+      line-height: 1.8;
+    }
+    
+    .hero-btn {
+      display: inline-block;
+       background: var(--secondary-color);
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .hero-btn:hover::before { left: 100%; }
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px var(--shadow);
+    }
+    
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-image-placeholder {
+      width: 100%;
+      max-width: 400px;
+      height: 400px;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-image-placeholder::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, var(--accent-color), var(--secondary-color), var(--primary-color), var(--accent-color));
+      animation: rotate 20s linear infinite;
+      opacity: 0.1;
+    }
+    
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+    
+    .section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-alt {
+      background: var(--bg-peach);
+      margin: 0;
+      max-width: 100%;
+      padding: 100px 20px;
+    }
+    
+    .section-alt .content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+      border-radius: 2px;
+    }
+    
+    .section p {
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .feature-card {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(224, 122, 95, 0.1);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .styled-list {
+      list-style: none;
+      margin: 30px 0;
+    }
+    
+    .styled-list li {
+      background: var(--white);
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .styled-list li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+    }
+    
+    .not-for-list li {
+      border-left-color: #ff6b6b;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.1"/><circle cx="60" cy="30" r="1.5" fill="white" opacity="0.1"/></svg>');
+    }
+    
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cta-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: var(--white);
+    }
+    
+    .cta-section h2::after { display: none; }
+    
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 35px;
+      opacity: 0.9;
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--primary-color);
+      padding: 20px 45px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    
+    .footer {
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 4rem 2rem 2rem;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .footer-tagline {
+      opacity: 0.85;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .footer-contact h4,
+    .footer-social h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-contact p {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0.9;
+    }
+
+    .footer-contact i {
+      color: var(--accent-color);
+      min-width: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .footer-social p {
+      opacity: 0.85;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      opacity: 0.75;
+      font-size: 0.9rem;
+    }
+
+    
+    @media (max-width: 768px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      
+      .hero-content h1 { font-size: 2.5rem; }
+      .section h2 { font-size: 2rem; }
+      .section { padding: 60px 20px; }
+      .section-alt { padding: 60px 20px; }
+      
+      .nav {
+        padding: 0 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .logo { font-size: 1.5rem; }
+      .order-btn-nav { padding: 10px 20px; }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-
 <body>
-    <header id="home">
-        <div class="logo">Kind Bites</div>
-        <p>Sweet Baked Kindness!</p>
-        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-        <nav>
-            <a href="#cookies-donuts">Cookies & Donuts</a>
-            <a href="#drinks">Drinks</a>
-            <a href="#sampler-boxes">Sampler Boxes</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
 
-        </nav>
-    </header>
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="logo">Kind Bites</a>
+      <a href="orders.html" class="order-btn-nav">Order Now</a>
+    </nav>
+  </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Sweet Happiness in Every Bite</h1>
-            <a href="#cookies-donuts" class="btn">Order Now</a>
-        </div>
-    </section>
-    
-    <section class="products" id="cookies-donuts">
-        <h2 class="section-title">Our Cookies & Donuts</h2>
-
-
-
-
-
-
-
-
-
-
-        <h3 class="specials-category-title"> 🍪 Cookies</h3>
-        <div class="product-grid">
-
-
-
-
-
-
-
-
-
-            
-            <div class="product-card">
-    <div class="product-image-carousel">
-        <img src="images/Biscoff Bliss Cookie.jpg" class="carousel-img active" alt="Biscoff Image 1">
-        <img src="images/Biscoff Bliss Cookie1.jpg" class="carousel-img" alt="Biscoff Image 2">
-    </div>
-    <div class="product-info">
-        <h3 class="product-name">Biscoff Bliss Cookie</h3>
-        <p class="product-price">₱90/pc · ₱275 (3) · ₱550 (6)</p>
-                        <select class="price-option">
-                    <option value="90">₱90 - 1 pc</option>
-                    <option value="275">₱275 - 3 pcs</option>
-                    <option value="550">₱550 - 6 pcs</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-                </div>
-
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Chunky Chocolate Chip.jpg" class="carousel-img active" alt="Chunky Chocolate Chip Image 1">
-                <img src="images/Chunky Chocolate Chip1.jpg" class="carousel-img" alt="Chunky Chocolate Chip Image 2">
-            </div>
-                <div class="product-info">
-                <h3 class="product-name">Chunky Chocolate Chip</h3>
-                <p class="product-price">₱65/pc · ₱200 (3) · ₱400 (6)</p>
-                <select class="price-option">
-                    <option value="65">₱65 - 1 pc</option>
-                    <option value="200">₱200 - 3 pcs</option>
-                    <option value="400">₱400 - 6 pcs</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Matcha Lovers Cookie.jpg" class="carousel-img active" alt="Matcha Lovers Cookie Image 1">
-                <img src="images/Matcha Lovers Cookie1.jpg" class="carousel-img" alt="Matcha Lovers Cookie Image 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">Matcha Lovers Cookie</h3>
-                    <p class="product-price">₱65/pc · ₱200 (3) · ₱400 (6)</p>
-                   <select class="price-option">
-                    <option value="65">₱65 - 1 pc</option>
-                    <option value="200">₱200 - 3 pcs</option>
-                    <option value="400">₱400 - 6 pcs</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>  
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Ruby Red Velvet Cheesecake.jpg" class="carousel-img active" alt="Ruby Red Velvet Cheesecake 1">
-                <img src="images/Ruby Red Velvet Cheesecake1.jpg" class="carousel-img" alt="Ruby Red Velvet Cheesecake 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">Ruby Red Velvet Cheesecake</h3>
-                    <p class="product-price">₱75/pc · ₱230 (3) · ₱460 (6)</p>
-                   <select class="price-option">
-                    <option value="75">₱75 - 1 pc</option>
-                    <option value="230">₱230 - 3 pcs</option>
-                    <option value="460">₱460 - 6 pcs</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>  
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/White Knight Chocolate Cookie.jpg" class="carousel-img active" alt="White Knight Chocolate Cookie 1">
-                <img src="images/White Knight Chocolate Cookie1.jpg" class="carousel-img" alt="White Knight Chocolate Cookie 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">White Knight Chocolate Cookie</h3>
-                    <p class="product-price">₱65/pc · ₱200 (3) · ₱400 (6)</p>
-                   <select class="price-option">
-                    <option value="65">₱65 - 1 pc</option>
-                    <option value="200">₱200 - 3 pcs</option>
-                    <option value="400">₱400 - 6 pcs</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>  
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Granola Crumbles Cookie.jpg" class="carousel-img active" alt="White Knight Chocolate Cookie 1">
-                <img src="images/Granola Crumbles Cookie1.jpg" class="carousel-img" alt="White Knight Chocolate Cookie 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">Granola Crumbles Cookie</h3>
-                    <p class="product-price">₱75/pc · ₱230 (3) · ₱460 (6)</p>
-                   <select class="price-option">
-                    <option value="75">₱75 - 1 pc</option>
-                    <option value="230">₱230 - 3 pcs</option>
-                    <option value="460">₱460 - 6 pcs</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div> 
-            </div>
-        </div>
-
-
-            <h3 class="specials-category-title"> ✨ Specials</h3>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Messy Donuts (Stick).jpg" class="carousel-img active" alt="Messy Donuts (Stick) 1">
-                <img src="images/Messy Donuts (Stick)1.jpg" class="carousel-img" alt="Messy Donuts (Stick) 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">Messy Donuts (Stick)</h3>
-                    <p class="product-price">₱30 · Add ₱5 toppings</p>
-                    <select class="price-option">
-                    <option value="30">₱30 - Plain</option>
-                    <option value="35">₱35 - With Toppings</option>
-                    </select>
-                    <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-
-           <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Messy Donuts (Cup).jpg" class="carousel-img active" alt="Messy Donuts (Cup) 1">
-                <img src="images/Messy Donuts (Cup)1.jpg" class="carousel-img " alt="Messy Donuts (Cup) 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">Messy Donuts (Cup)</h3>
-                    <p class="product-price">₱70–₱75 · 6 pcs with drizzle</p>
-                    <select class="price-option">
-                    <option value="70">₱70 - Regular Drizzle</option>
-                    <option value="75">₱75 - Heavy Drizzle</option>
-                    </select>
-                    <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-carousel">
-                <img src="images/Tiramisu.jpg" class="carousel-img active" alt="Tiramisu 1">
-                <img src="images/Tiramisu1.jpg" class="carousel-img" alt="Tiramisu 2">
-            </div>
-                <div class="product-info">
-                    <h3 class="product-name">Tiramisu</h3>
-                    <p class="product-price">₱79–₱179 · In a cup or In a tub</p>
-                    <select class="price-option">
-                    <option value="79">₱79 - In a cup </option>
-                    <option value="179">₱179 - In a tub </option>
-                    </select>
-                    <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="products" id="drinks">
-        <h2 class="section-title">Our Drinks</h2>
-        <h3 class="drink-category-title">☕ Coffee Base (Cold Brew)</h3>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/Kl6xcV9YnB-WDpkQhckTgsg4d8Y2RFnlmqVVsQo9iOs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaW1tZWRpYXRl/LmNvLnVrL3Byb2R1/Y3Rpb24vdm9sYXRp/bGUvc2l0ZXMvMi8y/MDIyLzA4L0dldHR5/SW1hZ2VzLTQ4MTYw/MjE2My1iMDc2MDNj/LmpwZz9xdWFsaXR5/PTkwJnJlc2l6ZT01/NTYsNTA1');" aria-label="Classic Spanish Brew"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Classic Spanish Brew</h3>
-                    <p class="product-price">₱65 / ₱75</p>
-                   <select class="price-option">
-                    <option value="65">₱65 - 12 oz</option>
-                    <option value="75">₱75 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div> 
-            </div>
-
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/IHLqNfoXU1852agNMC7x_Hm8VdRxYaMp28J37ixCR3o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dGhlZ3JhY2lvdXN3/aWZlLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxNS8xMi9I/b21lbWFkZS1DYXJh/bWVsLUNvZmZlZS1D/cmVhbWVyLTIuanBn');" aria-label="Creamy Caramel Vanilla Drink"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Creamy Caramel Vanilla</h3>
-                    <p class="product-price">₱65 / ₱85</p>
-                   <select class="price-option">
-                    <option value="65">₱65 - 12 oz</option>
-                    <option value="85">₱85 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            </div>
-
-            <h3 class="drink-category-title">🥛 Non-Coffee Base (Cold / Over Ice)</h3>
-            <div class="product-grid">
-
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/auqKW2HPpz5X_V5o6-2Gh3z4N0tBm7mWbumMAPou27U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVi/dXR0ZXJ5ZmFpcnl0/YWxlLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNS8wMS9r/b3JlYW4tc3RyYXdi/ZXJyeS1taWxrLXJl/Y2lwZS1maW5hbC05/LndlYnA');" aria-label="Strawberry Dream Milk"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Strawberry Dream Milk</h3>
-                    <p class="product-price">₱60 / ₱70</p>
-                   <select class="price-option">
-                    <option value="60">₱60 - 12 oz</option>
-                    <option value="70">₱70 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/a4btylLCG6PDyiDp-gAeYlqmifcM2QTEpsOENSS-8ho/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODc5/ODQ1NDUvcGhvdG8v/Y2hvY29sYXRlLW1p/bGsuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPVJZSEVUeEl6/ZWVBenVKMjdpYzVC/enNIMVZlVkNtbUNZ/ZFdxSGd4U2tSUG89');" aria-label="Chocolate Cloud Milk"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Chocolate Cloud Milk</h3>
-                    <p class="product-price">₱65 / ₱75</p>
-                   <select class="price-option">
-                    <option value="65">₱65 - 12 oz</option>
-                    <option value="75">₱75 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/HUUPFMWj0CuPq1alcLBY7skCbGKuCUcY3zdUg3JQYR0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWNvdXBsZWNvb2tz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMS8wOC9NYXRj/aGEtTGF0dGUtMDAx/LmpwZw');" aria-label="Classic Matcha Latte"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Classic Matcha Latte</h3>
-                    <p class="product-price">₱65 / ₱75</p>
-                   <select class="price-option">
-                    <option value="65">₱65 - 12 oz</option>
-                    <option value="75">₱75 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            </div>
-
-            <h3 class="drink-category-title">🍓 Fruit Soda (Cold / Over Ice)</h3>
-            <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://bakesbybrownsugar.com/wp-content/uploads/2023/08/Strawberry-Soda-10.jpg');" aria-label="Strawberry Rizz Soda"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Strawberry Rizz Soda</h3>
-                    <p class="product-price">₱39 / ₱59</p>
-                   <select class="price-option">
-                    <option value="39">₱39 - 12 oz</option>
-                    <option value="59">₱59 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/soEOJ6YQSIO9pbk4YsGf4_FOcWE3zVB4YDfKTSht44M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2hlbHNlYXNtZXNz/eWFwcm9uLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNi8w/Ny9TcGFya2xpbmct/TGVtb25hZGUuanBn');" aria-label="Blueberry Sparkle Drink"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Blueberry Sparkle</h3>
-                    <p class="product-price">₱39 / ₱59</p>
-                   <select class="price-option">
-                    <option value="39">₱39 - 12 oz</option>
-                    <option value="59">₱59 - 16 oz</option>
-                </select>
-                <button class="btn btn-add-to-cart">Add to Cart</button>
-                </div>
-        </div>
-    </section>
-
-    <section class="products" id="sampler-boxes">
-        <h2 class="section-title">Sampler & Custom Boxes</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/A7FJ80itcWveN4f1O-rMMz0y5c_sTV9OXZ12apeeBPs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zcHJp/bmtsZXMuY29tL2Nk/bi9zaG9wL2ZpbGVz/L0p1bmVNaW5pczJf/MjIyeDIyMkAyeC5w/bmc_dj0xNzE2NDg0/NzA2');" aria-label="Sampler Box"></div>
-                <div class="product-info">
-                  <h3 class="product-name">Sampler Box</h3>
-                <p class="product-price">₱440 – Box of All Flavors (6 pcs)</p>
-                <p class="product-description">Includes: Chunky Choco, White Knight, Biscoff Bliss, Matcha Lovers, Granola Crumbles, Red Velvet Cheesecake</p>
-                <button class="btn btn-add-to-cart" data-price="440">Add to Cart</button>
-                    </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://imgs.search.brave.com/Y0TJGIu_Tl5UqVcJ_5iSK4VYB7EvbGiRmdftBjeOx6U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYmFr/ZXJzLnVzL2Nkbi9z/aG9wL2ZpbGVzL0Jv/eF9vZl8xMl9DdXBj/YWtlcy5wbmc_dj0x/NzQ0OTMzNjQ5Jndp/ZHRoPXt3aWR0aH0');" aria-label="Create Your Own Box"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Create Your Own Box</h3>
-                    <p class="product-price">Box of 3: Price of cookies + ₱10<br>Box of 6: Price of cookies + ₱15</p>
-                    <p style="font-size: 0.9rem; color: var(--brown);">Choose any 3 or 6 cookies</p>
-                    <button class="btn" onclick="openCustomBox()">Customize</button>
-                </div>
-            </div>
-        </div>
-
-<!-- Custom Box Modal -->
-<div id="custom-box-modal" class="cart-modal">
-  <div class="cart-content">
-    <span class="close-cart" onclick="closeCustomBox()">&times;</span>
-    <h2>Customize Your Box</h2>
-
-    <div>
-      <label><strong>Choose Box Size:</strong></label><br>
-      <label><input type="radio" name="boxSize" value="3" checked> Box of 3 (₱10 box fee)</label><br>
-      <label><input type="radio" name="boxSize" value="6"> Box of 6 (₱15 box fee)</label>
-    </div>
-
-    <div style="margin-top: 20px;">
-      <strong>Select Cookie Quantities:</strong>
-      <p style="color: var(--gray); font-size: 0.9rem;">
-        Total must exactly match box size. Current total: <span id="cookie-count">0</span>
-      </p>
-
-      <div id="cookie-qty-list" style="text-align: left;">
-        <label>Chunky Chocolate Chip (₱65): 
-          <input type="number" min="0" placeholder="0" data-name="Chunky Chocolate Chip" data-price="65">
-        </label><br>
-        <label>Biscoff Bliss Cookie (₱90):
-          <input type="number" min="0" placeholder="0" data-name="Biscoff Bliss Cookie" data-price="90">
-        </label><br>
-        <label>Matcha Lovers Cookie (₱65): 
-          <input type="number" min="0" placeholder="0" data-name="Matcha Lovers Cookie" data-price="65">
-        </label><br>
-        <label>Ruby Red Velvet Cheesecake (₱75): 
-          <input type="number" min="0" placeholder="0" data-name="Ruby Red Velvet Cheesecake" data-price="75">
-        </label><br>
-        <label>White Knight Chocolate Cookie (₱65): 
-          <input type="number" min="0" placeholder="0" data-name="White Knight Chocolate Cookie" data-price="65">
-        </label><br>
-        <label>Granola Crumbles Cookie (₱75): 
-          <input type="number" min="0" placeholder="0" data-name="Granola Crumbles Cookie" data-price="75">
-          
-        </label>
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content fade-in">
+        <h1>Comfort You Deserve, Cakes You'll Love 🍪🎂</h1>
+        <p>At Kind Bites, we don't just bake — we create comfort, joy, and kindness in every bite.</p>
+        <a href="orders.html" class="hero-btn">Order Your Treats Now</a>
+      </div>
+      <div class="hero-image float">
+        <img src="images/logo/KindBitesLogo.jpg" alt="Kind Bites Treats" style="width: 100%; max-width: 400px; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
       </div>
     </div>
+  </section>
 
-    <p id="box-warning" style="color: red; display: none; margin-top: 10px;"></p>
-
-    <button class="btn" style="margin-top: 20px;" onclick="submitCustomBox()">Add Box to Cart</button>
-  </div>
-</div>
-
-</div>
-
-</div>
-
-        <div style="margin-top: 40px; text-align: center;">
-            <h3 class="section-title">Add-Ons</h3>
-            <p style="font-size: 1rem; color: var(--brown);">
-                ₱20 - Ribbon (Brown or Smokey Pink) <br>
-                ₱15 - Greeting Card (with dried flowers)
-            </p>
-
-            <h3 class="section-title">Donation Drive</h3>
-            <p style="font-size: 1rem; color: var(--brown);">
-                Every box of 3: 3% goes to the fund<br>
-                Every box of 6: 5% goes to the fund
-            </p>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <h2 class="section-title">About Kind Bites</h2>
-        <div class="about-content">
-            <p>Kind Bites started with a simple mission: to create delicious treats that not only satisfy your sweet tooth but also spread kindness in the world.</p>
-            <p>Every purchase helps support local charities through our donation program. We believe small acts of kindness can make a big difference.</p>
-        </div>
-    </section>
+  <section class="section animate-on-scroll">
+    <h2>Why Choose Kind Bites?</h2>
+    <p>From soft, chewy cookies to aesthetic cakes, mini donuts, and drinks, everything we make is designed to brighten your day, make your celebrations stress-free, and remind you that you deserve a treat that feels good inside and out.</p>
     
-    <footer id="contact">
-        <div class="logo">Kind Bites</div>
-    <p><i class="fas fa-map-marker-alt"></i> San Matias, Sta. Rita, Pampanga</p>
-    <p><i class="fas fa-phone"></i> 0918-744-1236</p>
-    <p><i class="fas fa-envelope"></i> kindbitesph@gmail.com</p>
+    <div class="features">
+      <div class="feature-card">
+        <span class="feature-icon">🧁</span>
+        <h3>Same-Day Comfort</h3>
+        <p>Need a pick-me-up today? We've got you covered with same-day delivery for cookies, donuts, and drinks.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎂</span>
+        <h3>Custom Celebrations</h3>
+        <p>Beautiful, affordable custom cakes that make every birthday and special moment Instagram-worthy.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💕</span>
+        <h3>Kindness in Every Bite</h3>
+        <p>Every purchase gives back to our community through our Kindness Fund - treats that do good while tasting amazing.</p>
+      </div>
+    </div>
+  </section>
 
-        
-        <div class="social-icons">
-    <a href="https://www.instagram.com/kindbites.ph/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.facebook.com/laa.delizia" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <i class="fab fa-facebook"></i>
-    </a>
+  <div class="section-alt">
+    <div class="content animate-on-scroll">
+      <h2>Our Story 💕</h2>
+      <p>Kind Bites started with a simple belief: treats should be both comforting and affordable, without losing beauty or quality. Whether you're a student needing a pick-me-up, a young professional rewarding yourself after work, or a mom planning a birthday, we've got you covered.</p>
+      <p>And the sweetest part? Every cookie box you buy also gives back: 3% from a box of 3 and 5% from a box of 6 goes into our Kindness Fund. With every bite, you're part of something bigger. 💕</p>
+    </div>
+  </div>
 
-</div>
-        <p>Follow us on social media for updates and special offers!</p>
-        <p>&copy; 2025 Kind Bites. All rights reserved.</p>
+  <section class="section animate-on-scroll">
+    <h2>Instant Comfort 🌈</h2>
+    <p>Your first Kind Bites moment is instant comfort — cookies that melt away stress, drinks that soothe, and cakes that make celebrations effortlessly special.</p>
+    <p><strong>Your first win?</strong> That warm, "this is what I needed" feeling.</p>
+  </section>
+
+  <div class="section-alt">
+    <div class="content animate-on-scroll">
+      <h2>Your Go-To Treats 🧁</h2>
+      <p>Next thing you know, Kind Bites is your safe little comfort. Celebrations? You already know our cakes are pretty, customizable, and budget-friendly. Stressful days? Cookies and donuts are just a DM away, with same-day delivery to rescue you. And each time you order, you're spreading kindness too.</p>
+    </div>
+  </div>
+
+  <section class="section animate-on-scroll">
+    <h2>Part of Your Traditions 🚀</h2>
+    <p>Soon, Kind Bites becomes part of your happy traditions — the cake on your baby's birthday, the cookies shared at study nights, the donuts passed around at work. More than food, it's joy, comfort, and kindness — shared, celebrated, remembered.</p>
+  </section>
+
+  <div class="section-alt">
+    <div class="content animate-on-scroll">
+      <h2>This is for you if… 📈</h2>
+      <ul class="styled-list">
+        <li>You're a student or young professional who deserves sweet comfort after a long day.</li>
+        <li>You're Gen Z who loves aesthetic, Instagram-worthy cakes.</li>
+        <li>You're a mom looking for pretty, affordable cakes for your child's birthday.</li>
+        <li>You believe treats should feel good and do good.</li>
+      </ul>
+
+      <h2>This is NOT for you if… ⛔</h2>
+      <ul class="styled-list not-for-list">
+        <li>You prefer big commercial brands over something personal and aesthetic.</li>
+        <li>You don't care about quality or kindness.</li>
+        <li>You're too kuripot to treat yourself once in a while.</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section animate-on-scroll">
+    <h2>Easy Payment 💳</h2>
+    <p><strong>Cookies, donuts, drinks:</strong> Pay per piece or per box via Cash or GCash.</p>
+    <p><strong>Cakes:</strong> Half downpayment to secure your order, then COD or full payment on pickup/delivery.</p>
+
+    <h2 style="margin-top: 60px;">Little Surprises 🎁</h2>
+    <p>✨ First-time customer? You get a free cookie.</p>
+    <p>✨ Cake orders include a free candle 🎂.</p>
+    <p>✨ Surprise promos drop anytime — because kindness is best when unexpected!</p>
+  </section>
+
+  <div class="section-alt">
+    <div class="content animate-on-scroll">
+      <h2>Our Sweetness Guarantee 🤝</h2>
+      <p>Sweetness guaranteed — if Kind Bites doesn't make your day brighter, you don't pay.</p>
+    </div>
+  </div>
+
+
+  <section class="cta-section" id="order">
+    <div class="cta-content">
+      <h2>Ready to Treat Yourself?</h2>
+      <p>Cake slots are limited weekly, and cookie batches sell out fast. Don't wait — order today and get the comfort you deserve.</p>
+      <a href="orders.html" class="cta-btn">Order Now</a>
+      
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Kind Bites</div>
+                    <p class="footer-tagline">Spreading sweetness everywhere we go</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> San Matias, Sta. Rita, Pampanga</p>
+                    <p><i class="fas fa-phone"></i> 0918-744-1236</p>
+                    <p><i class="fas fa-envelope"></i> kindbitesph@gmail.com</p>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/kindbites.ph/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/laa.delizia" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <p>Follow us for updates and special offers!</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kind Bites. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <button class="back-to-top" aria-label="Back to top">↑</button>
-    
-<!-- Cart Modal -->
-<div id="cart-modal" class="cart-modal">
-  <div class="cart-content">
-    <span class="close-cart" onclick="closeCart()">&times;</span>
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <p id="cart-total"></p>
-    <button class="btn" onclick="placeOrder()">Place Order</button>
-    <button class="btn" onclick="clearCart()">Clear Cart</button>
-  </div>
-</div>
+  <script>
 
-<!-- GCash Confirmation Modal -->
-<div id="gcash-modal" class="cart-modal">
-  <div class="cart-content">
-    <span class="close-cart" onclick="closeGcashModal()">&times;</span>
-    <h2>Confirm GCash Payment</h2>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    <div id="order-info-form" style="margin-top: 20px;">
-      <label><strong>Your Name:</strong></label><br>
-      <input type="text" id="customer-name" placeholder="Juan Dela Cruz" required><br><br>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-      <label><strong>Phone Number:</strong></label><br>
-      <input type="tel" id="customer-phone" placeholder="09123456789" required><br><br>
-    </div>
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
 
-    <p>Please transfer the total amount to the following GCash number:</p>
-    <p><strong>📱 0918-744-1236 (Kind Bites)</strong></p>
-    <p>After sending, upload your screenshot and click the button below.</p>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-    <button class="btn" onclick="confirmGcashPayment()">✅ I’ve Paid via GCash</button>
-  </div>
-</div>
+    let lastScroll = 0;
+    const header = document.querySelector('.header');
 
-    <script src="script.js"></script>
-
-
-
-
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        header.style.background = 'rgba(255, 250, 247, 0.98)';
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+      } else {
+        header.style.background = 'rgba(255, 250, 247, 0.95)';
+        header.style.boxShadow = 'none';
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
 </body>
-
 </html>
