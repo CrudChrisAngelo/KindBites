@@ -375,7 +375,7 @@ nav {
 
 /* ===== SECTIONS ===== */
 .products {
-    padding: 5rem 0;
+    padding: 2rem 0;
     position: relative;
 }
 
@@ -1310,7 +1310,7 @@ footer {
 /* ===== BENTO & CUSTOMIZED CAKES SECTION ===== */
 #bento-cakes {
     background: var(--white);
-    padding: 5rem 0;
+    padding: 2rem 0;
     position: relative;
 }
 
