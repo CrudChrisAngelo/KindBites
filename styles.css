@@ -493,7 +493,7 @@ nav {
 /* ===== PRODUCT IMAGES ===== */
 .product-image,
 .product-image-carousel {
-    height: 200px;
+    height: 250px;
     position: relative;
     overflow: hidden;
 }
@@ -892,10 +892,6 @@ nav {
     padding: 8px;
   }
 }
-
-
-
-
 
 /* ===== ADDON INFO ===== */
 .addon-info {
@@ -1311,6 +1307,334 @@ footer {
     color: var(--gray);
 }
 
+/* ===== BENTO & CUSTOMIZED CAKES SECTION ===== */
+#bento-cakes {
+    background: var(--white);
+    padding: 5rem 0;
+    position: relative;
+}
+
+#bento-cakes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(247, 151, 139, 0.03) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(247, 151, 139, 0.03) 25%, transparent 25%);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+/* Cake Gallery */
+.cake-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.cake-image-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    aspect-ratio: 1;
+}
+
+.cake-image-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(247, 151, 139, 0.1), rgba(168, 230, 207, 0.1));
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.cake-image-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.cake-image-card:hover::before {
+    opacity: 1;
+}
+
+.cake-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+    border-radius: var(--radius-lg);
+}
+
+.cake-image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Pricing Section */
+.cake-pricing-section {
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pricing-card {
+    background: linear-gradient(135deg, rgba(247, 151, 139, 0.08), rgba(168, 230, 207, 0.08));
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 2px solid rgba(247, 151, 139, 0.15);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(247, 151, 139, 0.05) 0%, transparent 70%);
+    transform: rotate(45deg);
+    transition: var(--transition);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.pricing-card:hover::before {
+    transform: rotate(45deg) scale(1.1);
+}
+
+.cake-type-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.cake-type-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius);
+}
+
+.price-list {
+    position: relative;
+    z-index: 2;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(247, 151, 139, 0.2);
+    transition: var(--transition);
+}
+
+.price-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+.price-item:last-child {
+    margin-bottom: 0;
+}
+
+.size {
+    font-weight: 600;
+    color: var(--gray-dark);
+    font-size: 1.1rem;
+}
+
+.price {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Contact Buttons */
+.cake-contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.cake-btn-fb,
+.cake-btn-ig {
+    padding: 1rem 2rem;
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.cake-btn-fb {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.cake-btn-ig {
+    background: #F7978B;
+    color: var(--white);
+}
+
+.cake-btn-fb::before,
+.cake-btn-ig::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.cake-btn-fb:hover,
+.cake-btn-ig:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.cake-btn-fb:hover::before,
+.cake-btn-ig:hover::before {
+    left: 0;
+}
+
+.cake-btn-fb i,
+.cake-btn-ig i {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cake-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cake-contact-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .cake-btn-fb,
+    .cake-btn-ig {
+        width: 280px;
+        justify-content: center;
+    }
+
+    .cake-pricing-section {
+        margin-top: 3rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Cake Carousel Styles */
+.cake-image-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-image:first-child {
+    position: relative;
+}
+
+@media (max-width: 480px) {
+    .cake-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .cake-contact-buttons {
+        margin-top: 2rem;
+    }
+
+    .cake-btn-fb,
+    .cake-btn-ig {
+        width: 100%;
+        max-width: 300px;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .pricing-card {
+        padding: 1.25rem;
+    }
+
+    .price-item {
+        padding: 0.875rem;
+    }
+}
+
 /* ===== GCASH PAYMENT MODAL ===== */
 .order-info-form {
     margin-bottom: 2rem;
@@ -1362,13 +1686,24 @@ footer {
 @media (max-width: 768px) {
     .gallery {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 images per row */
-        gap: 6px; /* tighter spacing for mobile */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
     }
 
-    #lightbox img { max-width: 96vw; max-height: 70vh; }
-    #lightbox .lb-prev, #lightbox .lb-next { width: 40px; height: 40px; font-size: 28px; }
-    #lightbox .lb-close { font-size: 34px; }
+    #lightbox img { 
+        max-width: 96vw; 
+        max-height: 85vh; 
+    }
+    
+    #lightbox .lb-prev, #lightbox .lb-next { 
+        width: 40px; 
+        height: 40px; 
+        font-size: 28px; 
+    }
+    
+    #lightbox .lb-close { 
+        font-size: 34px; 
+    }
 
     .gallery img {
         width: 100%;
@@ -1380,7 +1715,7 @@ footer {
     .contact-buttons {
         display: flex;
         flex-direction: column;
-        gap: 10px; /* stack fb + ig buttons nicely */
+        gap: 10px;
     }
 
     .contact-buttons a {
@@ -1488,6 +1823,41 @@ footer {
         width: 100%;
         justify-content: center;
     }
+
+    /* Mobile slider improvements */
+    .slider {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 10px;
+    }
+
+    .slides img {
+        min-height: 300px;
+        max-height: 450px;
+    }
+
+    .prev, .next {
+        font-size: 20px;
+        padding: 10px 8px;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .lightbox {
+        padding: 10px;
+    }
+
+    .lightbox-img {
+        max-width: 98%;
+        max-height: 85%;
+    }
+
+    .lightbox .close {
+        top: 20px; 
+        right: 20px;
+        font-size: 40px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1513,6 +1883,22 @@ footer {
 
     .floating-elements {
         display: none;
+    }
+
+    .slides img {
+        min-height: 250px;
+        max-height: 350px;
+    }
+
+    .prev, .next {
+        font-size: 18px;
+        padding: 8px 6px;
+    }
+
+    .lightbox .close {
+        font-size: 35px;
+        top: 15px;
+        right: 15px;
     }
 }
 

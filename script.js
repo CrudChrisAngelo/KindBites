@@ -60,6 +60,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Cake Gallery Carousel
+function initCakeCarousel() {
+    const cakeCards = document.querySelectorAll('.cake-image-card[data-images]');
+    
+    cakeCards.forEach(card => {
+        const imagesData = JSON.parse(card.getAttribute('data-images'));
+        
+        // Only create carousel if there are multiple images
+        if (imagesData.length <= 1) return;
+        
+        const existingImg = card.querySelector('.carousel-image');
+        let currentIndex = 0;
+        
+        // Create additional image elements
+        imagesData.slice(1).forEach((imageSrc, index) => {
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.alt = existingImg.alt;
+            img.className = 'carousel-image';
+            card.appendChild(img);
+        });
+        
+        const images = card.querySelectorAll('.carousel-image');
+        
+        // Auto-switch images every 4 seconds
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 4000);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCakeCarousel();
+   
+});
+
 // ------------------ Cart Functionality ------------------
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
